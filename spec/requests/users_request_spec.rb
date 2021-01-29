@@ -19,7 +19,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "GET #show" do
-    subject { get(user_path(user.id)) }
+    subject { get(user_path(user_id)) }
     context "ユーザーが存在する時" do
       let(:user) { create(:user) }
       let(:user_id) { user.id }
@@ -42,13 +42,13 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    # context ":idに対応するユーザーが存在しないとき" do
-    #   let(:user_id) { 1 }
+    context ":idに対応するユーザーが存在しないとき" do
+      let(:user_id) { 1 }
 
-    #   it "エラーが発生する" do
-    #     expect { subject }.to raise_error ActiveRecord::RecordNotFound
-    #   end
-    # end
+      it "エラーが発生する" do
+        expect { subject }.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "GET #new" do
