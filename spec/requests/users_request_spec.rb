@@ -143,6 +143,7 @@ RSpec.describe "Users", type: :request do
         origin_name = user.name
         new_name = params[:user][:name]
         expect { subject }.to change { user.reload.name }.from(origin_name).to(new_name)
+        # expect { subject; user.reload }.to change(user, :name).from(origin_name).to(new_name)
       end
 
       it "ageが更新される" do
